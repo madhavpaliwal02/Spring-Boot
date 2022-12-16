@@ -2,6 +2,7 @@ package com.crud.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
@@ -54,18 +55,27 @@ public class StuServiceImpl implements StuService {
 
 	// Delete a Student
 	@Override
-	public List<Student> deleteStudent(long id) {
+//	public List<Student> deleteStudent(long id) {
+//		Student s = getStudent(id);
+//		list.remove(s);
+//		return list;
+//	}
+	public void deleteStudent(long id) {
 		// TODO Auto-generated method stub
-		Student s = getStudent(id);
-		list.remove(s);
-		return list;
+		list = this.list.stream().filter(e-> e.getId() != id).collect(Collectors.toList());
 	}
 
 	// Update a Student
 	@Override
 	public Student updateStudent(Student s) {
 		// TODO Auto-generated method stub
-		
+		list.forEach(e->{
+			if(e.getId() == s.getId()) {
+				e.setName(s.getName());
+				e.setEmail(s.getEmail());
+				e.setRollno(s.getRollno());
+			}
+		});
 		return s;
 	}
 

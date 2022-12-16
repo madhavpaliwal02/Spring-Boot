@@ -19,6 +19,6 @@ public interface StuService {
 	public Student updateStudent(Student s);
 
 	// Delete a Student
-	public List<Student> deleteStudent(long id);
+	public void deleteStudent(long id);
 
 }
