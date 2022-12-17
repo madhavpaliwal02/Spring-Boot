@@ -1,16 +1,16 @@
 package com.crud.entities;
 
-//import javax.persistence.Column;
-//import javax.persistence.Entity;
-//import javax.persistence.Id;
-//import javax.persistence.Table;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-//@Entity
-//@Table(name = "students")
+@Entity
+@Table(name = "students")
 public class Student {
 
-//	@Id
-//	@Column(name = "id")	
+	@Id
+	@Column(name = "id")	
 	private long id;
 	private String name;
 	private String email;
