@@ -1,6 +1,7 @@
 package com.crud.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.crud.entities.Student;
 
@@ -10,7 +11,7 @@ public interface StuService {
 	public List<Student> getStudents();
 
 	// Get a Student
-	public Student getStudent(long id);
+	public Optional<Student> getStudent(long id);
 
 	// Add a Student
 	public Student addStudent(Student s);

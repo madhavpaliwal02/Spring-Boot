@@ -1,6 +1,7 @@
 package com.crud.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,11 +23,8 @@ public class StuServiceImpl implements StuService {
 
 	// Get a Student
 	@Override
-	public Student getStudent(long id) {
-		return studentDao.getOne(id);
-//		Student s = (Student) studentDao.getReferenceById(id);
-//		System.out.println(s);
-//		return s;
+	public Optional<Student> getStudent(long id) {
+		return studentDao.findById(id);
 	}
 
 	// Add a Student
@@ -39,7 +37,7 @@ public class StuServiceImpl implements StuService {
 	// Delete a Student
 	@Override
 	public void deleteStudent(long id) {
-		studentDao.delete(getStudent(id));
+		studentDao.deleteById(id);
 	}
 
 	// Update a Student

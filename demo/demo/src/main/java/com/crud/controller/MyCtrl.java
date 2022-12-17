@@ -1,6 +1,7 @@
 package com.crud.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -35,7 +36,7 @@ public class MyCtrl {
 
 	// Get A student by id
 	@GetMapping("/students/{id}")
-	public Student getStudent(@PathVariable Long id) {
+	public Optional<Student> getStudent(@PathVariable Long id) {
 		return this.stuService.getStudent(id);
 	}
 
