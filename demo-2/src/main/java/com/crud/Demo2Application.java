@@ -15,14 +15,12 @@ public class Demo2Application implements CommandLineRunner {
 		SpringApplication.run(Demo2Application.class, args);
 	}
 	
-	@Autowired
-	private UserRepository userRepo;
 
-	@Override
+	@Override  
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
-		userRepo.save(new User(27, "Madhav Paliwal", "mp@gmail.com"));
-		userRepo.save(new User(39, "Palak Porwal", "pp@gmail.com"));
+//		userRepo.save(new User(27, "Madhav Paliwal", "mp@gmail.com"));
+//		userRepo.save(new User(39, "Palak Porwal", "pp@gmail.com"));
 	}
 
 }
