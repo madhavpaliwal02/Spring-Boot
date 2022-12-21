@@ -1,26 +1,20 @@
 package com.crud;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-import com.crud.entity.User;
-import com.crud.repository.UserRepository;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
-public class Demo2Application implements CommandLineRunner {
+public class Demo2Application {
 
 	public static void main(String[] args) {
 		SpringApplication.run(Demo2Application.class, args);
 	}
-	
 
-	@Override  
-	public void run(String... args) throws Exception {
-		// TODO Auto-generated method stub
-//		userRepo.save(new User(27, "Madhav Paliwal", "mp@gmail.com"));
-//		userRepo.save(new User(39, "Palak Porwal", "pp@gmail.com"));
+	@Bean
+	public RestTemplate restTemplate() {
+		return new RestTemplate();
 	}
 
 }

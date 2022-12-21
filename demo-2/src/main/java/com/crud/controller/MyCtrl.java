@@ -7,7 +7,9 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
+import com.crud.entity.Contact;
 import com.crud.entity.User;
 import com.crud.services.UserService;
 
@@ -18,6 +20,9 @@ public class MyCtrl {
 	@Autowired
 	private UserService userService;
 
+	@Autowired
+	private RestTemplate restTemplate;
+
 	@GetMapping("/home")
 	public String home() {
 		return "Welcome Back Beauty !!!";
@@ -26,6 +31,12 @@ public class MyCtrl {
 	// Get all user by id
 	@GetMapping("/users/{userId}")
 	public User getUser(@PathVariable("userId") int id) {
-		return userService.getUser(id);
+
+		User u = userService.getUser(id);
+
+		// Fetching contacts via microservices
+		u.setContact(this.restTemplate.getForObject("http://localhost:9002/contacts/" + id, List.class));
+
+		return u;
 	}
 }
