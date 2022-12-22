@@ -13,7 +13,6 @@ import com.crud.entity.Contact;
 import com.crud.entity.User;
 import com.crud.services.UserService;
 
-//@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 public class MyCtrl {
 
@@ -35,7 +34,7 @@ public class MyCtrl {
 		User u = userService.getUser(id);
 
 		// Fetching contacts via microservices
-		u.setContact(this.restTemplate.getForObject("http://localhost:9002/contacts/" + id, List.class));
+		u.setContact(this.restTemplate.getForObject("http://contact-service:9200/contacts/" + id, List.class));
 
 		return u;
 	}
