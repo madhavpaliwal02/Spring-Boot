@@ -16,15 +16,9 @@ spring:
     - id: user-service
       uri: lb://user-service
       predicates:
-       - Path=/user/**
+       - Path=/users/**
 
     - id: contact-service
       uri: lb://contact-service
       predicates:
-       - Path=/contact/**
-
-
-
-
-
-
+       - Path=/contacts/**

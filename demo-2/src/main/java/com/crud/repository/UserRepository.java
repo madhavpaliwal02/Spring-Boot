@@ -1,9 +1,9 @@
 package com.crud.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+// import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.crud.entity.User;
+// import com.crud.entity.User;
 
-public interface UserRepository /* extends JpaRepository<User, Integer> */ {
+public interface UserRepository /*extends JpaRepository<User, Integer>*/ {
 
 }

@@ -3,14 +3,13 @@ package com.crud.entity;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+//import javax.persistence.Column;
+//import javax.persistence.Entity;
+//import javax.persistence.GeneratedValue;
+//import javax.persistence.GenerationType;
+//import javax.persistence.Id;
 
 //@Entity
-//@Table(name = "users")
 public class User {
 
 //	@Id
@@ -18,6 +17,7 @@ public class User {
 	private int id;
 	private String name;
 	private String email;
+//	@Column(name = "contacts")
 	private List<Contact> contact = new ArrayList<>();
 
 	public User() {
@@ -64,7 +64,6 @@ public class User {
 		this.email = email;
 	}
 
-	
 	public List<Contact> getContact() {
 		return contact;
 	}

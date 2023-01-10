@@ -1,7 +1,12 @@
 package com.crud.entity;
 
+//import javax.persistence.Entity;
+//import javax.persistence.Id;
+
+//@Entity
 public class Contact {
 
+//	@Id
 	private int id;
 	private String city;
 	private String country;
