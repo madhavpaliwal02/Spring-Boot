@@ -1,12 +1,15 @@
 package com.sb;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class Employee {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
     private String city;
@@ -18,6 +21,13 @@ public class Employee {
 
     public Employee(int id, String name, String city, String designation, long salary) {
         this.id = id;
+        this.name = name;
+        this.city = city;
+        this.designation = designation;
+        this.salary = salary;
+    }
+
+    public Employee(String name, String city, String designation, long salary) {
         this.name = name;
         this.city = city;
         this.designation = designation;
