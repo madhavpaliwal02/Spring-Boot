@@ -3,16 +3,15 @@ package com.sb;
 import java.util.List;
 import java.util.Optional;
 
-import javax.transaction.NotSupportedException;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import lombok.RequiredArgsConstructor;
+
 @Service
+@RequiredArgsConstructor
 public class EmpServiceImpl implements EmpService {
 
-    @Autowired
-    private EmpRemo empRepo;
+    private EmpRepo empRepo;
 
     @Override
     public Employee addEmployees(Employee emp) {

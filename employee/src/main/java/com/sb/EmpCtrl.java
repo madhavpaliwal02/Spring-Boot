@@ -1,9 +1,7 @@
 package com.sb;
 
 import java.util.List;
-import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -13,14 +11,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.ResourceAccessException;
 
+import lombok.RequiredArgsConstructor;
+
 @RestController
-@CrossOrigin("http://localhost:3000")
+@RequiredArgsConstructor
+@RequestMapping("/employees")
+// @CrossOrigin("http://localhost:3000")
 public class EmpCtrl {
 
-    @Autowired
     private EmpService empService;
 
     @GetMapping("/home")
@@ -29,13 +31,14 @@ public class EmpCtrl {
     }
 
     // Get all emp
-    @GetMapping("/employees")
+    @GetMapping
+    // @ResponseStatus
     public List<Employee> getEmployees() {
         return this.empService.getEmployees();
     }
 
     // Get a emp
-    @GetMapping("/employees/{id}")
+    @GetMapping("{id}")
     public ResponseEntity<Employee> getEmployee(@PathVariable int id) {
         Employee employee = this.empService.getEmployees(id)
                 .orElseThrow(() -> new ResourceAccessException("Employee doesn't exixt with id: " + id));
@@ -43,13 +46,13 @@ public class EmpCtrl {
     }
 
     // Add a emp
-    @PostMapping("/employees")
+    @PostMapping
     public Employee addEmployee(@RequestBody Employee emp) {
         return this.empService.addEmployees(emp);
     }
 
     // Update a emp
-    @PutMapping("/employees/{id}")
+    @PutMapping("/{id}")
     public Employee updateEmployee(@PathVariable int id, @RequestBody Employee emp) {
         return this.empService.getEmployees(id)
                 .map(employee -> {
@@ -63,7 +66,7 @@ public class EmpCtrl {
     }
 
     // Delete a emp
-    @DeleteMapping("/employees/{id}")
+    @DeleteMapping("/{id}")
     public void deleteEmployee(@PathVariable int id) {
         this.empService.deleteEmployees(id);
     }
